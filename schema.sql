@@ -1,3 +1,4 @@
+USE champions;
 DROP TABLE IF EXISTS champions;
 
 -- League of Legends champions: id- unique id, name- name of champion, type- champion type, role- main lane, desc- description of champion.
