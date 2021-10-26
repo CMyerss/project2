@@ -1,11 +1,11 @@
-const express = require('express');
+//const express = require('express');
 const fs = require('fs');
 const mysql = require('mysql');
 
 const credentials = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
 const connection = mysql.createConnection(credentials);
 
-const create_champion = express();
+//const create_champion = express();
 
 connection.connect(error => {
     if (error) {
