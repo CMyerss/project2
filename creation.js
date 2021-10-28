@@ -106,7 +106,7 @@ service.get('/:champion', (request, response) => {
 });
 
 // get a certain role from the database. 
-service.get('/:role', (request, response) => {
+service.get('/role/:role', (request, response) => {
   const param = [request.params.role];
   const query = 'SELECT * FROM champions WHERE c_role = ?';
 
@@ -114,7 +114,7 @@ service.get('/:role', (request, response) => {
 });
 
 // get a certain type from the database. 
-service.get('/:type', (request, response) => {
+service.get('/type/:type', (request, response) => {
   const param = [request.params.type];
   const query = 'SELECT * FROM champions WHERE c_type = ?';
 
@@ -161,7 +161,7 @@ service.patch('/champions/:id', (request, response) => {
   ];
 
   const query = 'UPDATE champions SET c_name = ?, c_type = ?, c_role = ?, c_desc = ? WHERE id = ?';
-  connection.query(query, parameters, (error, result) => {
+  connection.query(query, param, (error, result) => {
     if (error) {
       response.status(404);
       response.json({
