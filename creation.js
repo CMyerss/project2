@@ -8,6 +8,22 @@ const connection = mysql.createConnection(credentials);
 const service = express();
 service.use(express.json());
 
+/************ MIDDLEWARE ************************/
+service.use((request, response, next) => {
+  response.set('Access-Control-Allow-Origin', '*');
+  response.set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  next();
+});
+
+service.options('*', (request, response) => {
+  response.set('Access-Control-Allow-Headers', 'Content-Type');
+  response.set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
+  response.sendStatus(200);
+});
+
+/*************** P2 ************************** */
 connection.connect(error => {
     if (error) {
       console.error(error);
@@ -197,10 +213,26 @@ service.delete('/champions/:id', (request, response) => {
   });
 });
 
+/**************** REPORT ************************/
+service.get("/report.html", (request, response) => {
+  var options = {
+    root: path.join(__dirname)
+  };
+
+  var fileName = 'report.html';
+  response.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent:', fileName);
+    }
+  });
+});
 
 /****************** CONNECTION *****************/
 const port = 5001;
 service.listen(port, () => {
   console.log(`We're live in port ${port}!`);
 });
+
 
