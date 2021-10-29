@@ -23,5 +23,21 @@
     <li>Creation and schema scripts are included, at the moment, we still need to add credentials.json to gitignore.</li>
     <li>Steady commits were achieved.</li>
     </ol> 
+    <p>Curl Commands for Chase and Deven:</p>
+    <ol>
+        <li>curl https://project2.devensspot.me:8443/champions (gets alls champions)</li>
+        <li>curl https://project2.devensspot.me:8443/aatrox (gets a certain champion, aatrox for example)</li>
+        <li>curl https://project2.devensspot.me:8443/fighter (gets a role of a champion, fighter for example)</li>
+        <li>curl https://project2.devensspot.me:8443/top (gets a lane for a champion, top for example)</li>
+        <li>curl --header 'Content-Type: application/json' \
+            --data '{"c_name": "Aphelios", "c_type": "Marksman", "c_role": "bot", "c_desc": "The Weapon of the Faithful"}' \
+            https://project2.devensspot.me:8443/champions (post command that creates a new champion)</li>
+        <li>curl --header 'Content-Type: application/json' \
+            --request PATCH \
+            --data '{"c_name": "Aphelios", "c_type": "Marksman", "c_role": "bot", "c_desc": "The Hitman and the Seer"}' \
+            https://project2.devensspot.me:8443/4 (updates Aphelios description)</li>
+        <li>curl --request DELETE \
+            https://project2.devensspot.me:8443/4 (deletes Aphelios from the database)</li>
+    </ol>
 </body>
 </html>
